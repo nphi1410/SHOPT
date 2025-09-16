@@ -1,5 +1,17 @@
-export function Loader() {
+import Lottie from "lottie-react";
+import cartLoader from "../../assets/cart-loader.json";
+
+const Loader = ({ size = 120 }) => {
   return (
-    <div className="animate-spin border-4 border-gray-300 border-t-blue-600 rounded-full w-6 h-6"></div>
+    <div className="flex items-center justify-center">
+      <Lottie
+        animationData={cartLoader}
+        loop
+        autoplay
+        style={{ width: size, height: size, filter: "brightness(0) invert(1)" }}
+      />
+    </div>
   );
-}
+};
+
+export default Loader;

@@ -1,6 +1,6 @@
 import { useUsers } from "../../hooks/useUsers";
-import { Loader } from "../../components/common/Loader";
 import { UserCard } from "../../components/cards/UserCard";
+import Loader from "../../components/common/Loader";
 
 export function UsersPage() {
   const { data, isLoading } = useUsers();
