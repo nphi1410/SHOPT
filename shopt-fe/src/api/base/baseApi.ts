@@ -1,3 +1,4 @@
+import type { User } from "../../types/user";
 import client from "./client";
 
 export class BaseApi<T> {
@@ -7,8 +8,13 @@ export class BaseApi<T> {
     this.baseUrl = baseUrl;
   }
   async getAll(): Promise<T[]> {
-    const { data } = await client.get(this.baseUrl);
-    return data;
+    // const { data } = await client.get(this.baseUrl);
+    const data: User[] = [
+      { id: "1", name: "John Doe", email: "2FV9o@example.com" },
+      { id: "2", name: "Jane Doe", email: "2FV9o@example.com" },
+      { id: "3", name: "John Doe", email: "2FV9o@example.com" },
+    ];
+    return data as T[];
   }
 
   async getById(id: string): Promise<T> {

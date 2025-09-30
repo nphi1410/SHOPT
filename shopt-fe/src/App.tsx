@@ -1,21 +1,19 @@
-import { HomePage } from "./pages/Home/HomePage";
-import { UsersPage } from "./pages/Users/UsersPage";
 import { LoginPage } from "./pages/Auth/LoginPage";
 import { Navbar } from "./components/layout/Navbar";
-import Loader from "./components/common/Loader";
+import { useAppSelector } from "./app/hooks";
+import { UsersPage } from "./pages/Users/UsersPage";
 
 export default function App() {
+  const darkMode = useAppSelector((state) => state.theme.darkMode);
+  const login = useAppSelector((state) => state.loginState.isLogin);
   return (
-    <div>
+    <div
+      className={`min-h-screen transition-colors ${
+        darkMode ? "bg-gray-800" : "bg-gray-200"
+      }`}
+    >
       <Navbar />
-      <main className="p-4">
-        <HomePage />
-        <UsersPage />
-        <LoginPage />
-        <div className="flex justify-center items-center h-100">
-          <Loader />
-        </div>
-      </main>
+      <main className={`p-4 `}>{!login ? <LoginPage /> : <UsersPage />}</main>
     </div>
   );
 }
